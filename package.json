@@ -1,0 +1,30 @@
+{
+  "name": "hotiptvman",
+  "version": "1.0.0",
+  "description": "HotIPTVMan - Full Stack IPTV Platform",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run api:dev\" \"npm run client:dev\"",
+    "start": "concurrently \"npm run api:start\" \"npm run client:start\"",
+    "api:dev": "cd api && npm run start:dev",
+    "api:start": "cd api && npm start",
+    "client:dev": "cd client && npm run dev",
+    "client:start": "cd client && npm run dev",
+    "install:all": "npm install && cd api && npm install && cd ../client && npm install",
+    "build": "cd api && npm run build && cd ../client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/othman4dev/hotiptvman.git"
+  },
+  "keywords": ["iptv", "nestjs", "react", "typescript"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/othman4dev/hotiptvman/issues"
+  },
+  "homepage": "https://github.com/othman4dev/hotiptvman#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
