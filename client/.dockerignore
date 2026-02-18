@@ -1,0 +1,14 @@
+# Add to .dockerignore for Client
+node_modules
+dist
+npm-debug.log
+.env
+.env.local
+.git
+.gitignore
+README.md
+.DS_Store
+coverage
+.vscode
+.idea
+*.log

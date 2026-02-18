@@ -1,0 +1,102 @@
+# Auth API Test Script
+
+## Test the authentication endpoints
+
+### 1. Register a new user
+POST http://localhost:5001/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@iptv4ever.com",
+  "name": "Test User",
+  "password": "TestP@ss123"
+}
+
+###
+
+### 2. Register another user
+POST http://localhost:5001/auth/register
+Content-Type: application/json
+
+{
+  "email": "admin@iptv4ever.com",
+  "name": "Admin User",
+  "password": "AdminP@ss123"
+}
+
+###
+
+### 3. Login with first user
+POST http://localhost:5001/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@iptv4ever.com",
+  "password": "TestP@ss123"
+}
+
+###
+
+### 4. Get user profile (replace TOKEN with actual token from login)
+GET http://localhost:5001/auth/profile
+Authorization: Bearer TOKEN
+
+###
+
+### 5. Get current user info
+GET http://localhost:5001/auth/me
+Authorization: Bearer TOKEN
+
+###
+
+### 6. Get all users (development only)
+GET http://localhost:5001/auth/users
+
+###
+
+### 7. Test invalid login
+POST http://localhost:5001/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@iptv4ever.com",
+  "password": "WrongPassword"
+}
+
+###
+
+### 8. Test duplicate registration
+POST http://localhost:5001/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@iptv4ever.com",
+  "name": "Duplicate User",
+  "password": "TestP@ss123"
+}
+
+###
+
+### 9. Test weak password validation
+POST http://localhost:5001/auth/register
+Content-Type: application/json
+
+{
+  "email": "weak@iptv4ever.com",
+  "name": "Weak Password User",
+  "password": "weak"
+}
+
+###
+
+### 10. Test invalid email
+POST http://localhost:5001/auth/register
+Content-Type: application/json
+
+{
+  "email": "invalid-email",
+  "name": "Invalid Email User",
+  "password": "ValidP@ss123"
+}
+
+###

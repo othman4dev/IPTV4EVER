@@ -1,7 +1,7 @@
 {
-  "name": "hotiptvman",
+  "name": "iptv4ever",
   "version": "1.0.0",
-  "description": "HotIPTVMan - Full Stack IPTV Platform",
+  "description": "IPTV4EVER - Full Stack IPTV Platform",
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm run api:dev\" \"npm run client:dev\"",
@@ -15,15 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/othman4dev/hotiptvman.git"
+    "url": "git+https://github.com/othman4dev/iptv4ever.git"
   },
   "keywords": ["iptv", "nestjs", "react", "typescript"],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/othman4dev/hotiptvman/issues"
+    "url": "https://github.com/othman4dev/iptv4ever/issues"
   },
-  "homepage": "https://github.com/othman4dev/hotiptvman#readme",
+  "homepage": "https://github.com/othman4dev/iptv4ever#readme",
   "devDependencies": {
     "concurrently": "^9.2.1"
   }

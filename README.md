@@ -1,4 +1,4 @@
-# 📺 HotIPTVMan - Premium IPTV Platform
+# 📺 IPTV4EVER - Premium IPTV Platform
 
 A full-stack IPTV streaming platform built with **NestJS** (TypeScript) for the backend API and **React** (TypeScript) for the frontend.
 
@@ -14,7 +14,7 @@ A full-stack IPTV streaming platform built with **NestJS** (TypeScript) for the 
 ## 📋 Project Structure
 
 ```
-hotiptvman/
+iptv4ever/
 ├── api/                 # NestJS Backend API
 │   ├── src/
 │   │   ├── main.ts
@@ -61,7 +61,7 @@ hotiptvman/
 
 **Port**: 5000  
 **Environment**: Development  
-**CORS**: Enabled for `http://localhost:3000` and `hotiptvman.com`
+**CORS**: Enabled for `http://localhost:3000` and `iptv4ever.com`
 
 Edit [`api/.env`](api/.env):
 
@@ -69,7 +69,7 @@ Edit [`api/.env`](api/.env):
 PORT=5000
 NODE_ENV=development
 FRONTEND_URL=http://localhost:3000
-DOMAIN=hotiptvman.com
+DOMAIN=iptv4ever.com
 ```
 
 ### Client Configuration
@@ -81,8 +81,8 @@ Edit [`client/.env`](client/.env):
 
 ```env
 VITE_API_URL=http://localhost:5000
-VITE_APP_NAME=HotIPTVMan
-VITE_DOMAIN=hotiptvman.com
+VITE_APP_NAME=IPTV4EVER
+VITE_DOMAIN=iptv4ever.com
 ```
 
 ## 📦 Installation
@@ -153,7 +153,7 @@ Response:
 {
   "status": "ok",
   "timestamp": "2026-01-31T...",
-  "service": "HotIPTVMan API"
+  "service": "IPTV4EVER API"
 }
 ```
 
@@ -258,10 +258,10 @@ ISC License
 
 ## 👨‍💻 Author
 
-**HotIPTVMan Team**
+**IPTV4EVER Team**
 
 ---
 
-**🌐 Domain**: hotiptvman.com  
+**🌐 Domain**: iptv4ever.com  
 **📺 Built with**: NestJS + React + TypeScript  
 **🚀 Ready for**: Production deployment

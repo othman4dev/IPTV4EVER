@@ -8,7 +8,7 @@ export class AppController {
   @Get()
   getHello() {
     return {
-      message: "Welcome to HotIPTVMan API",
+      message: "Welcome to IPTV4EVER API",
       status: "running",
     };
   }

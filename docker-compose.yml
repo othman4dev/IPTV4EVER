@@ -1,0 +1,84 @@
+version: "3.8"
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: iptv4ever-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: iptv4ever_root_2026
+      MYSQL_DATABASE: iptv4ever_db
+      MYSQL_USER: iptv4ever_user
+      MYSQL_PASSWORD: iptv4ever_pass_2026
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - iptv4ever-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+
+  # NestJS API
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: iptv4ever-api
+    restart: always
+    ports:
+      - "5001:5001"
+    environment:
+      PORT: 5001
+      NODE_ENV: production
+      FRONTEND_URL: http://localhost:3000
+      DOMAIN: iptv4ever.com
+      JWT_SECRET: iptv4ever-super-secret-key-change-in-production-2026
+      JWT_EXPIRES_IN: 1h
+      DB_TYPE: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USERNAME: iptv4ever_user
+      DB_PASSWORD: iptv4ever_pass_2026
+      DB_DATABASE: iptv4ever_db
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - iptv4ever-network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:5001"]
+      timeout: 10s
+      retries: 5
+      interval: 10s
+
+  # React Client
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: iptv4ever-client
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_API_URL: http://localhost:5001
+      VITE_APP_NAME: IPTV4EVER
+      VITE_DOMAIN: iptv4ever.com
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - iptv4ever-network
+
+networks:
+  iptv4ever-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local

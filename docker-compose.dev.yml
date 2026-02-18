@@ -1,0 +1,100 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: iptv4ever-mysql-dev
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword123}
+      MYSQL_DATABASE: ${DB_NAME:-iptv4ever_db}
+      MYSQL_USER: ${DB_USER:-iptv4ever_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-iptv4ever_pass_2026}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data_dev:/var/lib/mysql
+    networks:
+      - iptv4ever-network
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p${DB_ROOT_PASSWORD:-rootpassword123}",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    container_name: iptv4ever-api-dev
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USERNAME: ${DB_USER:-iptv4ever_user}
+      DB_PASSWORD: ${DB_PASSWORD:-iptv4ever_pass_2026}
+      DB_DATABASE: ${DB_NAME:-iptv4ever_db}
+      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key-change-this-in-production}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-1d}
+      PORT: 5001
+    ports:
+      - "5001:5001"
+    volumes:
+      # Mount source code for hot reload
+      - ./api/src:/app/src
+      - ./api/tsconfig.json:/app/tsconfig.json
+      - ./api/tsconfig.build.json:/app/tsconfig.build.json
+      # Preserve node_modules in container
+      - /app/node_modules
+    networks:
+      - iptv4ever-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    command: npm run start:dev
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: iptv4ever-client-dev
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      VITE_API_URL: http://localhost:5001
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount source code for hot reload
+      - ./client/src:/app/src
+      - ./client/index.html:/app/index.html
+      - ./client/vite.config.ts:/app/vite.config.ts
+      - ./client/tsconfig.json:/app/tsconfig.json
+      - ./client/tsconfig.app.json:/app/tsconfig.app.json
+      - ./client/tsconfig.node.json:/app/tsconfig.node.json
+      # Preserve node_modules in container
+      - /app/node_modules
+    networks:
+      - iptv4ever-network
+    depends_on:
+      - api
+    command: npm run dev -- --host
+
+volumes:
+  mysql_data_dev:
+    driver: local
+
+networks:
+  iptv4ever-network:
+    driver: bridge
