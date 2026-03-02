@@ -128,6 +128,7 @@ export class AuthService {
       sub: user.id,
       email: user.email,
       name: user.name,
+      role: user.role,
     };
 
     const expiresIn = 3600; // 1 hour
@@ -254,7 +255,7 @@ export class AuthService {
     });
 
     // Create reset URL (frontend will handle this route)
-    const resetUrl = `${process.env.FRONTEND_URL || "http://localhost:3000"}/reset-password?token=${token}`;
+    const resetUrl = `${process.env.FRONTEND_URL || "http://localhost:5173"}/reset-password?token=${token}`;
 
     // Email content
     const mailOptions = {

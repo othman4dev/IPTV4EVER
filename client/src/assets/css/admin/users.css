@@ -1,0 +1,383 @@
+/* ─── Page layout ─────────────────────────────────────────────────── */
+/* Shared table/modal/toast/form styles are inherited from plans.css   */
+
+.admin-plans select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3E%3Cpath fill='%23888' d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.admin-users {
+  padding: 2rem 3rem;
+  flex-grow: 1;
+  min-height: calc(100vh - 60px);
+  background: #fff;
+}
+
+.admin-users-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.admin-users-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.admin-users-header h1 span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #888;
+  margin-left: 10px;
+}
+
+/* ─── User avatar (initials) ──────────────────────────────────────── */
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #1a1a2e;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-cell-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.user-cell-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1a1a2e;
+}
+
+.user-cell-email {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+/* ─── Badges ──────────────────────────────────────────────────────── */
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.role-admin {
+  background: #fff0f0;
+  color: #ff3b3b;
+}
+
+.role-client {
+  background: #f0f4ff;
+  color: #4466ff;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-active {
+  background: #f0fff4;
+  color: #22c55e;
+}
+
+.status-banned {
+  background: #fff0f0;
+  color: #ff3b3b;
+}
+
+.sub-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #f5f5f5;
+  color: #888;
+}
+
+.sub-badge.sub-active {
+  background: #f0fff4;
+  color: #22c55e;
+}
+
+.sub-status-ongoing {
+  background: #f0fff4;
+  color: #22c55e;
+}
+.sub-status-pending {
+  background: #fff8e1;
+  color: #f59e0b;
+}
+.sub-status-paused {
+  background: #f0f4ff;
+  color: #4466ff;
+}
+.sub-status-expired {
+  background: #f5f5f5;
+  color: #999;
+}
+
+/* ─── Ban button ──────────────────────────────────────────────────── */
+.btn-icon-ban {
+  color: #f59e0b;
+  background: #fff8e1;
+}
+.btn-icon-ban:hover {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.btn-icon-unban {
+  color: #22c55e;
+  background: #f0fff4;
+}
+.btn-icon-unban:hover {
+  background: #22c55e;
+  color: #fff;
+}
+
+.btn-icon-view {
+  color: #4466ff;
+  background: #f0f4ff;
+}
+.btn-icon-view:hover {
+  background: #4466ff;
+  color: #fff;
+}
+
+/* ─── View More modal ─────────────────────────────────────────────── */
+.view-user-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.view-user-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #1a1a2e;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.view-user-info h3 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.view-user-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.view-user-badges {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.view-section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 0 0 10px;
+}
+
+.view-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.view-meta-item label {
+  display: block;
+  font-size: 0.72rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.view-meta-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.view-subscription-box {
+  background: #f9f9fb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.view-no-sub {
+  color: #aaa;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.view-sub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.sub-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.sub-history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9f9fb;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+}
+
+.sub-history-item strong {
+  color: #1a1a2e;
+}
+
+.sub-history-item .sub-history-dates {
+  color: #888;
+  font-size: 0.78rem;
+}
+
+/* ─── Confirm ban modal ───────────────────────────────────────────── */
+.ban-modal-body {
+  padding: 28px 24px 12px;
+  text-align: center;
+}
+
+.ban-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fff8e1;
+  color: #f59e0b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 16px;
+}
+
+.ban-icon.unban-icon {
+  background: #f0fff4;
+  color: #22c55e;
+}
+
+.ban-modal-body h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 8px;
+}
+
+.ban-modal-body p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.btn-ban {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #f59e0b;
+  color: #fff;
+  transition: background 0.2s;
+}
+.btn-ban:hover {
+  background: #d97706;
+}
+.btn-ban:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-unban {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #22c55e;
+  color: #fff;
+  transition: background 0.2s;
+}
+.btn-unban:hover {
+  background: #16a34a;
+}
+.btn-unban:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

@@ -39,7 +39,7 @@ Initiates the password reset process by sending a reset link to the user's email
 The user receives an email with a link like:
 
 ```
-http://localhost:3000/reset-password?token=abc123...xyz789
+http://localhost:5173/reset-password?token=abc123...xyz789
 ```
 
 ---

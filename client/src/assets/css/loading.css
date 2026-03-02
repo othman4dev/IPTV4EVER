@@ -1,0 +1,104 @@
+/* Beautiful animated loading page styles */
+.loading-root {
+  min-height: 100vh;
+  width: 100vw;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.loading-root.loaded {
+  opacity: 1;
+  pointer-events: auto;
+}
+.loading-bg-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 40%,
+    #ff3b3b22 0%,
+    #fff 100%
+  );
+  pointer-events: none;
+}
+.loading-center {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.loading-logo {
+  animation: popIn 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes popIn {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.loading-spinner {
+  stroke-dasharray: 226;
+  stroke-dashoffset: 226;
+  transform-origin: 50% 50%;
+  animation:
+    spin 1.2s linear infinite,
+    dash 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 226;
+  }
+  50% {
+    stroke-dashoffset: 56;
+  }
+  100% {
+    stroke-dashoffset: 226;
+  }
+}
+.loading-title {
+  display: flex;
+  align-items: flex-end;
+  font-weight: 700;
+  color: #ff3b3b;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  user-select: none;
+  animation: fadeIn 1.1s 0.2s both;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 600px) {
+  .loading-title {
+    font-size: 1.5rem;
+  }
+  .loading-logo svg {
+    width: 48px;
+    height: 48px;
+  }
+}

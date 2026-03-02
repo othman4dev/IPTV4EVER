@@ -1,0 +1,12 @@
+.dashboard-content {
+  display: flex;
+  align-items: center;
+  height: calc(100vh - 60px);
+  min-height: 500px;
+}
+.dashboard-main {
+  min-height: calc(100vh - 60px);
+  padding: 2rem 3rem;
+  flex-grow: 1;
+  overflow: scroll;
+}

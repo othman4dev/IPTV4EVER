@@ -61,14 +61,14 @@ iptv4ever/
 
 **Port**: 5000  
 **Environment**: Development  
-**CORS**: Enabled for `http://localhost:3000` and `iptv4ever.com`
+**CORS**: Enabled for `http://localhost:5173` and `iptv4ever.com`
 
 Edit [`api/.env`](api/.env):
 
 ```env
 PORT=5000
 NODE_ENV=development
-FRONTEND_URL=http://localhost:3000
+FRONTEND_URL=http://localhost:5173
 DOMAIN=iptv4ever.com
 ```
 

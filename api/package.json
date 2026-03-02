@@ -5,12 +5,11 @@
   "main": "dist/main.js",
   "scripts": {
     "start": "nest start",
-    "start:dev": "ts-node-dev --respawn --transpile-only src/main.ts",
-    "start:nest": "nest start --watch",
+    "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "build": "nest build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p tsconfig.build.json/tsconfig.build.json"
   },
   "keywords": [
     "iptv",
@@ -20,32 +19,41 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@nestjs/common": "^11.1.12",
-    "@nestjs/core": "^11.1.12",
+    "@nestjs/common": "^10.4.22",
+    "@nestjs/core": "^10.4.22",
     "@nestjs/jwt": "^11.0.2",
     "@nestjs/passport": "^11.0.5",
-    "@nestjs/platform-express": "^11.1.12",
+    "@nestjs/platform-express": "^10.4.22",
+    "@nestjs/swagger": "^7.4.2",
     "@nestjs/typeorm": "^11.0.0",
     "@types/nodemailer": "^7.0.9",
     "bcryptjs": "^3.0.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.3",
     "dotenv": "^17.2.3",
+    "mime-types": "^3.0.2",
+    "multer": "^2.1.0",
     "mysql2": "^3.16.2",
     "nodemailer": "^7.0.13",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
-    "typeorm": "^0.3.28"
+    "sanitize-html": "^2.17.1",
+    "typeorm": "^0.3.28",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
-    "@nestjs/cli": "^11.0.16",
+    "@nestjs/cli": "^10.4.9",
     "@types/bcryptjs": "^2.4.6",
-    "@types/node": "^25.2.3",
+    "@types/mime-types": "^3.0.1",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^20.11.30",
     "@types/passport-jwt": "^4.0.1",
-    "ts-node": "^10.9.2",
+    "@types/sanitize-html": "^2.16.0",
+    "@types/uuid": "^10.0.0",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.5"
   }
 }

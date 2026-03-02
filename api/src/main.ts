@@ -24,7 +24,7 @@ async function bootstrap() {
   // Enable CORS for frontend
   app.enableCors({
     origin: [
-      "http://localhost:3000",
+      "http://localhost:5173",
       "https://iptv4ever.com",
       "https://www.iptv4ever.com",
     ],

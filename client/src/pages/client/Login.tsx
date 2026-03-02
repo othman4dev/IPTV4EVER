@@ -2,12 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { validateEmail, validatePassword } from '../../scripts/validation';
 import { loginUser } from '../../services/authService';
+import { useAuth } from '../../context/AuthContext';
 import '../../assets/css/login.css';
 import logo from '../../assets/images/iptv4ever-logo.svg';
 import sidePicture from '../../assets/images/movie-grid.png';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [step, setStep] = useState<1 | 2>(1);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -87,11 +89,11 @@ const Login = () => {
 
     try {
       const response = await loginUser({ email, password });
+      login(response.user);
       setSuccessMessage('Login successful! Redirecting...');
-      
       // Redirect after successful login
       setTimeout(() => {
-        navigate('/dashboard');
+        navigate('/home');
       }, 1500);
     } catch (error: any) {
       setApiError(error.message || 'Login failed. Please try again.');

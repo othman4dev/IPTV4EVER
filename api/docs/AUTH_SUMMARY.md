@@ -121,7 +121,7 @@ JWT_EXPIRES_IN=1h
 ### 🎉 Server Status
 
 ✅ API Server: http://localhost:5001  
-✅ Client: http://localhost:3000  
+✅ Client: http://localhost:5173  
 ✅ All routes registered and working!
 
 ---

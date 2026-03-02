@@ -17,7 +17,12 @@
     "type": "git",
     "url": "git+https://github.com/othman4dev/iptv4ever.git"
   },
-  "keywords": ["iptv", "nestjs", "react", "typescript"],
+  "keywords": [
+    "iptv",
+    "nestjs",
+    "react",
+    "typescript"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -26,5 +31,6 @@
   "homepage": "https://github.com/othman4dev/iptv4ever#readme",
   "devDependencies": {
     "concurrently": "^9.2.1"
-  }
+  },
+  "dependencies": {}
 }

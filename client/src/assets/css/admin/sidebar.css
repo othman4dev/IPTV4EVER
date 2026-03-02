@@ -1,0 +1,112 @@
+/* Sidebar styles for admin dashboard */
+.admin-sidebar {
+  width: 240px;
+  /* overflow: hidden; */
+  background: #ff3b3b;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: width 0.2s;
+  height: 80vh;
+  min-height: 450px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  position: relative;
+  margin-top: 60px;
+}
+
+.sidebar-minimized {
+  width: 60px;
+  border-top-right-radius: 0px;
+}
+
+.admin-sidebar-header {
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.admin-sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+}
+
+.admin-sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-left: 4px solid transparent;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.admin-sidebar-link.active,
+.admin-sidebar-link:hover {
+  background: #fff;
+  color: #000;
+  border-left: 4px solid #000;
+}
+
+.admin-sidebar-link i {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.admin-sidebar-footer {
+  padding: 1.2rem 1.5rem;
+  font-size: 0.95rem;
+  color: #aaa;
+  border-top: 1px solid #222;
+  text-align: center;
+}
+
+.minimize-sidebar {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  background: #ff3b3b;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  border-top-right-radius: 7px;
+  cursor: pointer;
+  height: 60px;
+  width: 60px;
+}
+.minimize-sidebar i {
+  font-size: 1.2rem;
+}
+.minimize-sidebar:hover {
+  background: #000;
+  color: #fff;
+  transition: 0.2s;
+}
+
+@media (max-width: 900px) {
+  .admin-sidebar {
+    width: 70px;
+  }
+  .admin-sidebar-header,
+  .admin-sidebar-footer {
+    display: none;
+  }
+  .admin-sidebar-link {
+    justify-content: center;
+    padding: 0.9rem 0;
+    font-size: 1.2rem;
+  }
+}

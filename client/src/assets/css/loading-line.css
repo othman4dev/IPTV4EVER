@@ -1,0 +1,38 @@
+.loading-line {
+  height: 5px;
+  width: 100%;
+  background-color: #fff0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.full {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    #ff3b3b,
+    #ff7b7b,
+    #ffd700,
+    #cd7f32,
+    #ff3b3b 90%
+  );
+  background-size: 300% 100%;
+  animation: loading-rainbow 2.2s linear infinite;
+  animation-direction: alternate;
+  transition: width 0.3s ease;
+}
+
+@keyframes loading-rainbow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}

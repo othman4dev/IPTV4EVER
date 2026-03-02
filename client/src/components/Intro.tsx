@@ -1,4 +1,3 @@
-import Logo from '../assets/images/iptv4ever-logo.svg';
 import '../assets/css/intro.css';
 
 const Intro = () => {
@@ -14,7 +13,7 @@ const Intro = () => {
                     <div className="feature-card">
                         <div className="circle-small"></div>
                         <div className="feature-icon">
-                            <i class="bi bi-grid-3x3"></i>
+                            <i className="bi bi-grid-3x3"></i>
                         </div>
                         <h3>10,000+ Channels</h3>
                         <p>Access thousands of live TV channels from around the world</p>
@@ -32,7 +31,7 @@ const Intro = () => {
                     <div className="feature-card">
                         <div className="circle-small"></div>
                         <div className="feature-icon">
-                            <i class="bi bi-stars"></i>
+                            <i className="bi bi-stars"></i>
                         </div>
                         <h3>Ultra HD Quality</h3>
                         <p>Crystal clear streaming in 4K and Full HD resolution</p>
@@ -41,7 +40,7 @@ const Intro = () => {
                     <div className="feature-card">
                         <div className="circle-small"></div>
                         <div className="feature-icon">
-                            <i class="bi bi-tablet"></i>
+                            <i className="bi bi-tablet"></i>
                         </div>
                         <h3>Multi-Device</h3>
                         <p>Watch on Smart TV, phone, tablet, or any device</p>

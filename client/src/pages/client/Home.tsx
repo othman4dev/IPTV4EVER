@@ -5,6 +5,9 @@ import Announcements from "../../components/Announcements";
 import Slider from "../../components/Slider";
 import Testimonials from "../../components/Testimonials";
 import Pricing from "../../components/Pricing";
+import FAQ from "../../components/FAQ";
+import Footer from "../../components/Footer";
+import ContactUs from "../../components/ContactUs";
 
 const Home = () => {
 
@@ -18,6 +21,9 @@ const Home = () => {
             <Slider />
             <Testimonials />
             <Pricing />
+            <FAQ />
+            <ContactUs />
+            <Footer />
         </>
     )
 }

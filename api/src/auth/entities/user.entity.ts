@@ -6,6 +6,11 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 
+export enum UserRole {
+  ADMIN = "admin",
+  CLIENT = "client",
+}
+
 @Entity("users")
 export class User {
   @PrimaryGeneratedColumn("uuid")
@@ -20,11 +25,17 @@ export class User {
   @Column()
   password!: string;
 
+  @Column({ type: "enum", enum: UserRole, default: UserRole.CLIENT })
+  role!: UserRole;
+
   @Column({ nullable: true })
   resetPasswordToken?: string;
 
   @Column({ type: "timestamp", nullable: true })
   resetPasswordExpires?: Date;
+
+  @Column({ type: "boolean", default: false })
+  isBanned!: boolean;
 
   @CreateDateColumn()
   createdAt!: Date;
