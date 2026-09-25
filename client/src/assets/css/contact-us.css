@@ -3,7 +3,7 @@
   /* margin-top: 100px; */
   margin-bottom: 100px;
 }
-.contact-section {
+.contact-wrapper .contact-section {
   width: 80%;
   margin: 0 auto 0 auto;
   padding: 60px 30px 80px 30px;
@@ -23,20 +23,20 @@
 }
 
 /* Floating label group */
-.contact-form-group {
+.contact-wrapper .contact-form-group {
   position: relative;
   margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
 }
 
-.form-input {
+.contact-wrapper .form-input {
   width: 100%;
-  padding: 1.1rem 1rem 0.6rem 1rem;
+  padding-left: 1rem;
   font-size: 1rem;
   border-radius: 8px;
   background: #fff;
-  color: #ddd;
+  color: #666;
   outline: none;
   transition:
     border-color 0.2s,
@@ -45,15 +45,15 @@
   border-color: #ddd;
 }
 
-.form-input:focus {
+.contact-wrapper .form-input:focus {
   border-color: #ff3b3b;
 }
 
-.form-label {
+.contact-wrapper .form-label {
   position: absolute;
   left: 1rem;
   top: 0.8rem;
-  color: #ddd;
+  color: #666;
   font-size: 1rem;
   pointer-events: none;
   background: transparent;
@@ -61,8 +61,8 @@
   padding: 0 0.25rem;
 }
 
-.form-input:focus + .form-label,
-.form-label.active {
+.contact-wrapper .form-input:focus + .contact-wrapper .form-label,
+.contact-wrapper .form-label.active {
   top: -0.7rem;
   left: 0.8rem;
   font-size: 0.85rem;
@@ -72,24 +72,24 @@
   z-index: 2;
 }
 
-textarea.form-input {
+.contact-wrapper textarea.form-input {
   min-height: 120px;
   resize: vertical;
 }
-.contact-subtitle {
+.contact-wrapper .contact-subtitle {
   color: #666;
   font-size: 1.1rem;
   max-width: 500px;
   margin: 0 auto;
 }
-.contact-content {
+.contact-wrapper .contact-content {
   display: flex;
   flex-wrap: nowrap;
   gap: 20px;
   align-items: stretch;
   justify-content: space-between;
 }
-.contact-form {
+.contact-wrapper .contact-form {
   width: 65%;
   min-width: 300px;
   display: flex;

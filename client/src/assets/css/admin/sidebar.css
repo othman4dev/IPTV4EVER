@@ -36,6 +36,8 @@
   flex-direction: column;
   padding: 0.5rem 0;
   gap: 0.5rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .admin-sidebar-link {
@@ -96,6 +98,87 @@
   transition: 0.2s;
 }
 
+/* Sidebar group (collapsible, e.g. Pages) */
+.sidebar-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-group-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  background: none;
+  border: none;
+  border-left: 4px solid transparent;
+  color: #fff;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+  overflow: hidden;
+}
+
+.sidebar-group-btn:hover,
+.sidebar-group-btn.open {
+  background: rgba(255, 255, 255, 0.12);
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+.sidebar-group-btn i {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.sidebar-link-label {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.sidebar-group-chevron {
+  margin-left: auto;
+  font-size: 0.8rem;
+  transition: transform 0.2s;
+}
+
+.sidebar-group-chevron.open {
+  transform: rotate(180deg);
+}
+
+.sidebar-sub-links {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-sub-link {
+  display: block;
+  padding: 0.55rem 1rem 0.55rem 2.8rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 0.88rem;
+  border-left: 4px solid transparent;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.sidebar-sub-link:hover,
+.sidebar-sub-link.active {
+  background: #fff;
+  color: #000;
+  border-left-color: #000;
+}
+
+.sidebar-sub-label {
+  margin-left: 10px;
+}
+
 @media (max-width: 900px) {
   .admin-sidebar {
     width: 70px;
@@ -108,5 +191,22 @@
     justify-content: center;
     padding: 0.9rem 0;
     font-size: 1.2rem;
+  }
+  .sidebar-group-btn {
+    justify-content: center;
+    padding: 0.9rem 0;
+    font-size: 1.2rem;
+  }
+  .sidebar-group-btn i {
+    margin-right: 0;
+  }
+  .sidebar-link-label,
+  .sidebar-group-chevron {
+    display: none;
+  }
+  .sidebar-sub-link {
+    padding: 0.55rem 0;
+    text-align: center;
+    font-size: 1rem;
   }
 }

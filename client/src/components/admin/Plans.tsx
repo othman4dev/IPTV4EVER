@@ -65,6 +65,7 @@ function FeatureRow({ feature, onSave, onDelete }: FeatureRowProps) {
       <input
         type="number"
         className="form-control feature-order-input"
+        style={{'maxWidth': '80px', 'paddingRight': '2px'}}
         value={order}
         min={1}
         onChange={(e) => setOrder(parseInt(e.target.value) || 1)}
@@ -486,6 +487,7 @@ const AdminPlans = () => {
                     className="form-control feature-order-input"
                     value={newFeatureOrder}
                     min={1}
+                    style={{'maxWidth': '80px', 'paddingRight': '2px'}}
                     onChange={(e) => setNewFeatureOrder(parseInt(e.target.value) || 1)}
                     placeholder="#"
                   />

@@ -1,0 +1,402 @@
+/* ─── Slide form styling ──────────────────────────────────────────────────── */
+.slide-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ─── Slide preview box ───────────────────────────────────────────────────── */
+.slide-preview-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f9f9fb 0%, #f3f4f7 100%);
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  min-height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-preview-img {
+  display: block;
+  max-width: 100%;
+  max-height: 180px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.slide-preview-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 8px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.btn-remove-image {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+  z-index: 4;
+}
+
+.btn-remove-image:hover {
+  background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+/* ─── File input styling ──────────────────────────────────────────────────── */
+input[type="file"].form-control {
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+/* ─── Icon input wrapper with live preview ────────────────────────────────── */
+.slide-icon-input-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.slide-icon-input-wrapper .form-control {
+  flex: 1;
+}
+
+.slide-icon-preview-box {
+  width: 60px;
+  height: 42px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f9f9fb 0%, #f3f4f7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #1a1a2e;
+  transition: all 0.2s;
+}
+
+/* ─── Color input wrapper (for background and text color) ──────────────────── */
+.slide-color-input-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.slide-color-picker {
+  width: 60px !important;
+  height: 42px !important;
+  padding: 4px !important;
+  cursor: pointer;
+  border: 1.5px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  flex-shrink: 0;
+}
+
+.slide-color-text {
+  flex: 1 !important;
+  font-family: monospace !important;
+}
+
+/* ─── Dim control slider ──────────────────────────────────────────────────── */
+.slide-dim-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.dim-slider {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #f3f4f7, #e5e7eb);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.dim-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(8, 145, 178, 0.3);
+  border: 2px solid white;
+  transition: all 0.2s;
+}
+
+.dim-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(8, 145, 178, 0.5);
+}
+
+.dim-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(8, 145, 178, 0.3);
+  border: 2px solid white;
+  transition: all 0.2s;
+}
+
+.dim-slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(8, 145, 178, 0.5);
+}
+
+.dim-value {
+  min-width: 50px;
+  background: #f3f4f7;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: 600;
+  color: #1a1a2e;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ─── Toggle row styling ──────────────────────────────────────────────────── */
+.slide-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.slide-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.slide-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.slide-toggle-track {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  background: #e5e7eb;
+  border-radius: 12px;
+  transition: background 0.3s;
+  border: 1.5px solid #d1d5db;
+}
+
+.slide-toggle input[type="checkbox"]:checked + .slide-toggle-track {
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  border-color: #0e7490;
+}
+
+.slide-toggle-thumb {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  top: 1.5px;
+  left: 2px;
+  transition:
+    left 0.3s,
+    box-shadow 0.3s;
+}
+
+.slide-toggle
+  input[type="checkbox"]:checked
+  + .slide-toggle-track
+  .slide-toggle-thumb {
+  left: 2px;
+}
+
+.slide-toggle-label {
+  font-weight: 500;
+  color: #1a1a2e;
+  user-select: none;
+}
+
+/* ─── Color preview in table ──────────────────────────────────────────────── */
+.slide-color-preview {
+  display: block;
+  width: 100%;
+  height: 28px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ─── Text color preview ──────────────────────────────────────────────────── */
+.slide-text-color-preview {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.slide-color-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.slide-color-badge.text-light {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.slide-color-badge.text-dark {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+/* ─── Toggle row ──────────────────────────────────────────────────────────── */
+.slide-toggle-row {
+  display: flex;
+  align-items: center;
+  height: 42px;
+}
+
+.slide-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slide-toggle input {
+  display: none;
+}
+
+.slide-toggle-track {
+  width: 42px;
+  height: 24px;
+  border-radius: 12px;
+  background: #e5e7eb;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.slide-toggle input:checked + .slide-toggle-track {
+  background: #10b981;
+}
+
+.slide-toggle-thumb {
+  position: absolute;
+  top: 1.5px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s;
+}
+
+.slide-toggle input:checked ~ .slide-toggle-track .slide-toggle-thumb,
+.slide-toggle input:checked + .slide-toggle-track .slide-toggle-thumb {
+  transform: translateX(18px);
+}
+
+.slide-toggle-label {
+  font-size: 0.88rem;
+  color: #555;
+}
+
+/* ─── Form grid for Order and Visibility ──────────────────────────────────── */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* ─── Title cell in table ─────────────────────────────────────────────────── */
+.slide-title-cell {
+  max-width: 280px;
+}
+
+.slide-title-cell strong {
+  display: block;
+  color: #1a1a2e;
+  font-weight: 600;
+}
+
+.slide-title-cell p {
+  margin: 0;
+  color: #999;
+  font-size: 0.85em;
+}
+
+/* ─── Hint text ───────────────────────────────────────────────────────────── */
+.ann-hint {
+  font-size: 0.78rem;
+  color: #888;
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+
+.ann-hint code {
+  background: #f0f0f5;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.76rem;
+  color: #555;
+}
+
+.ann-hint a {
+  color: #1a1a2e;
+  text-decoration: underline;
+}
+
+/* ─── Responsive adjustments ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .slide-color-input-wrapper {
+    flex-direction: column;
+  }
+
+  .slide-color-picker {
+    width: 100% !important;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

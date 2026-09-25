@@ -28,7 +28,7 @@ export interface CreateSubscriptionPayload {
 export type UpdateSubscriptionPayload = Partial<CreateSubscriptionPayload>;
 
 const headers = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("accessToken");
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 

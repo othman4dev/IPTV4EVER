@@ -156,6 +156,8 @@ const Header = () => {
     }
   };
 
+  const activeNavLink = window.location.pathname;
+
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="inner-header">
@@ -165,11 +167,11 @@ const Header = () => {
         <div className="header-center" ref={searchContainerRef}>
           <nav className={`navbar ${isSearchActive ? 'navbar-search-active' : ''}`}>
             <ul className={`nav-links ${isSearchActive ? 'nav-hidden' : ''}`}>
-              <li><a href="/home">Home</a><div className="active-link"></div></li>
-              <li><a href="/plans">Plans</a><div className="inactive-link"></div></li>
-              <li><a href="/blogs">Blogs</a><div className="inactive-link"></div></li>
-              <li><a href="/contact">Contact</a><div className="inactive-link"></div></li>
-              <li><a href="/about">About</a><div className="inactive-link"></div></li>
+              <li><a href="/home">Home</a><div className={`${activeNavLink === '/home' || activeNavLink === '/' ? 'active-link' : 'inactive-link'}`}></div></li>
+              <li><a href="/plans">Plans</a><div className={`${activeNavLink === '/plans' ? 'active-link' : 'inactive-link'}`}></div></li>
+              <li><a href="/profile">Profile</a><div className={`${activeNavLink === '/profile' ? 'active-link' : 'inactive-link'}`}></div></li>
+              <li><a href="/contact">Contact</a><div className={`${activeNavLink === '/contact' ? 'active-link' : 'inactive-link'}`}></div></li>
+              <li><a href="/blogs">Blog</a><div className={`${activeNavLink === '/blogs' ? 'active-link' : 'inactive-link'}`}></div></li>
             </ul>
             
             <div className={`search-container ${isSearchActive ? 'search-active' : ''}`}>
@@ -250,7 +252,7 @@ const Header = () => {
               <ul className="mobile-nav-links">
                 <li><a href="/home">Home</a><div className="active-link"></div></li>
                 <li><a href="/products">Products</a><div className="inactive-link"></div></li>
-                <li><a href="/blogs">Blogs</a><div className="inactive-link"></div></li>
+                <li><a href="/profile">Profile</a><div className="inactive-link"></div></li>
                 <li><a href="/contact">Contact</a><div className="inactive-link"></div></li>
                 <li><a href="/about">About</a><div className="inactive-link"></div></li>
               </ul>

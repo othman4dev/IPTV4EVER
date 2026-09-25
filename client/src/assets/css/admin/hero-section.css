@@ -1,0 +1,110 @@
+/* Hero section admin styling */
+.hero-section-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.hero-helper-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid #dbeafe;
+  background: linear-gradient(135deg, #eff6ff 0%, #f8fbff 100%);
+  border-radius: 10px;
+  color: #1e3a8a;
+  font-size: 0.9rem;
+}
+
+.hero-media-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.hero-media-preview {
+  margin-top: 12px;
+  border-radius: 12px;
+  border: 1.5px solid #e5e7eb;
+  background: linear-gradient(135deg, #f9f9fb 0%, #f3f4f7 100%);
+  min-height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-media-preview img,
+.hero-media-preview video {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.hero-media-empty {
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.hero-title-cell {
+  max-width: 300px;
+}
+
+.hero-title-cell strong {
+  display: block;
+  color: #1a1a2e;
+  font-weight: 700;
+}
+
+.hero-title-cell p {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 0.82rem;
+}
+
+.hero-media-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.hero-media-badge.image {
+  background: #ecfeff;
+  color: #0e7490;
+}
+
+.hero-media-badge.video {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* ── Inline colour picker reset button (used inside color-input-wrapper) ── */
+.color-reset-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0 2px;
+  line-height: 1;
+  transition: color 0.14s;
+}
+
+.color-reset-btn:hover {
+  color: #374151;
+}

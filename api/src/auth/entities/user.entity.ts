@@ -25,6 +25,9 @@ export class User {
   @Column()
   password!: string;
 
+  @Column({ type: "varchar", length: 30, nullable: true })
+  phone?: string | null;
+
   @Column({ type: "enum", enum: UserRole, default: UserRole.CLIENT })
   role!: UserRole;
 

@@ -1,0 +1,95 @@
+/* ─── Endpoint admin styling ─────────────────────────────────────────────── */
+.endpoint-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.endpoint-helper-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid #dbeafe;
+  background: linear-gradient(135deg, #eff6ff 0%, #f8fbff 100%);
+  border-radius: 12px;
+  color: #1e3a8a;
+  font-size: 0.92rem;
+}
+
+.endpoint-helper-note i {
+  font-size: 1rem;
+}
+
+.endpoint-fixed-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.endpoint-fixed-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 20px rgba(17, 24, 39, 0.18);
+}
+
+.endpoint-fixed-pill i {
+  color: #93c5fd;
+}
+
+.endpoint-fixed-text {
+  color: #4b5563;
+  font-size: 0.92rem;
+}
+
+.endpoint-url-cell {
+  max-width: 360px;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.endpoint-password-cell {
+  font-family: monospace;
+  letter-spacing: 0.08em;
+}
+
+.endpoint-username-cell {
+  font-weight: 600;
+}
+
+.endpoint-playlist-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.endpoint-playlist-cell i {
+  font-size: 0.95rem;
+}
+
+.endpoint-copy-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.endpoint-copy-text {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

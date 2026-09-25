@@ -1,0 +1,259 @@
+/* ─── Stats cards ─────────────────────────────────────────────────── */
+.sub-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 2rem;
+}
+
+.sub-stat-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.2rem 1.4rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sub-stat-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+}
+
+.sub-stat-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  line-height: 1;
+}
+
+.sub-stat-card.sub-stat-green {
+  border-left: 4px solid #22c55e;
+}
+.sub-stat-card.sub-stat-orange {
+  border-left: 4px solid #f97316;
+}
+.sub-stat-card.sub-stat-blue {
+  border-left: 4px solid #3b82f6;
+}
+.sub-stat-card.sub-stat-gray {
+  border-left: 4px solid #9ca3af;
+}
+.sub-stat-card.sub-stat-revenue {
+  border-left: 4px solid #a855f7;
+}
+
+/* ─── Toolbar filter ──────────────────────────────────────────────── */
+.sub-filter-select {
+  background: #f4f5f7;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  min-width: 140px;
+}
+
+.sub-filter-select:focus {
+  box-shadow: 0 0 0 2px rgba(26, 26, 46, 0.18);
+}
+
+/* ─── Status badges ───────────────────────────────────────────────── */
+.sub-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.sub-status-ongoing {
+  background: #dcfce7;
+  color: #16a34a;
+}
+.sub-status-pending {
+  background: #ffedd5;
+  color: #ea580c;
+}
+.sub-status-paused {
+  background: #dbeafe;
+  color: #2563eb;
+}
+.sub-status-expired {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* ─── User cell ───────────────────────────────────────────────────── */
+.sub-user-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sub-user-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1a1a2e;
+}
+.sub-user-email {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+/* ─── Plan badge ──────────────────────────────────────────────────── */
+.sub-plan-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #f3f4f6;
+  color: #1a1a2e;
+}
+
+/* ─── Price cell ──────────────────────────────────────────────────── */
+.sub-price {
+  font-weight: 700;
+  color: #16a34a;
+}
+
+/* ─── Date cell ───────────────────────────────────────────────────── */
+.sub-date {
+  font-size: 0.85rem;
+  color: #555;
+  white-space: nowrap;
+}
+.sub-date-null {
+  color: #bbb;
+  font-size: 0.82rem;
+}
+
+/* ─── Form section title ──────────────────────────────────────────── */
+.admin-plans .sub-form-section-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 1.2rem 0 0.6rem;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.admin-plans .sub-form-section-title:first-child {
+  margin-top: 0;
+}
+
+/* ─── User picker ─────────────────────────────────────────────────── */
+.admin-plans .sub-user-picker {
+  position: relative;
+}
+
+.admin-plans .sub-user-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.admin-plans .sub-user-search-icon {
+  position: absolute;
+  left: 14px;
+  color: #aaa;
+  font-size: 0.9rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.admin-plans .sub-user-search-input {
+  padding-left: 38px !important;
+}
+
+.admin-plans .sub-user-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.11);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.admin-plans .sub-user-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.admin-plans .sub-user-result:hover {
+  background: #f7f8fc;
+}
+
+.admin-plans .sub-user-result:not(:last-child) {
+  border-bottom: 1px solid #f5f5f5;
+}
+
+/* ─── User avatar (small) ─────────────────────────────────────────── */
+.sub-user-avatar-sm {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #1a1a2e;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ─── Selected user card ──────────────────────────────────────────── */
+.admin-plans .sub-user-selected-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1.5px solid #1a1a2e;
+  border-radius: 10px;
+  background: #f7f8fc;
+}
+
+.admin-plans .sub-user-card-clear {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  font-size: 0.9rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    color 0.15s,
+    background 0.15s;
+  flex-shrink: 0;
+}
+
+.admin-plans .sub-user-card-clear:hover {
+  color: #ef4444;
+  background: #fde8e8;
+}

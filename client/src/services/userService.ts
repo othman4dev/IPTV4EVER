@@ -15,6 +15,7 @@ export interface User {
   id: string;
   email: string;
   name: string;
+  phone?: string | null;
   role: "admin" | "client";
   isBanned: boolean;
   createdAt: string;
@@ -26,6 +27,7 @@ export interface CreateUserPayload {
   name: string;
   email: string;
   password: string;
+  phone?: string;
   role?: "admin" | "client";
 }
 
@@ -33,12 +35,13 @@ export interface UpdateUserPayload {
   name?: string;
   email?: string;
   password?: string;
+  phone?: string;
   role?: "admin" | "client";
   isBanned?: boolean;
 }
 
 const headers = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("accessToken");
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 

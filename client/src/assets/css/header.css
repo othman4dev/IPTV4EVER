@@ -595,7 +595,7 @@ button.profile-dropdown {
 button.profile-dropdown:hover .bg-circle,
 button.profile-dropdown.profile-open .bg-circle {
   transition: scale 0.3s;
-  scale: 10;
+  scale: 12;
 }
 
 button.profile-dropdown:hover .profile-info,
@@ -810,6 +810,11 @@ button.profile-dropdown.profile-open .profile-email {
 
 .notification-unread {
   background-color: #ff3b3b3d;
+}
+
+.overflow-y-scroll {
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
 }
 
 @media screen and (max-width: 900px) {

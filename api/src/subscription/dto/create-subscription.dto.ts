@@ -1,5 +1,6 @@
 import {
   IsEnum,
+  IsUUID,
   IsInt,
   IsNumber,
   IsDateString,
@@ -9,7 +10,7 @@ import {
 import { SubscriptionStatus } from "../subscription.entity";
 
 export class CreateSubscriptionDto {
-  @IsInt()
+  @IsUUID()
   userId!: string;
 
   @IsInt()

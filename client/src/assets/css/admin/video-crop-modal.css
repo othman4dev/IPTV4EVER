@@ -1,0 +1,467 @@
+/* ── VideoCropModal — white / red / black theme ─────────────────────── */
+
+.vcm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: vcm-fade-in 0.16s ease;
+}
+
+@keyframes vcm-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.vcm-modal {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  width: min(720px, 100%);
+  max-height: 92vh;
+  overflow: hidden;
+  animation: vcm-slide-up 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes vcm-slide-up {
+  from {
+    transform: translateY(20px) scale(0.97);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+
+.vcm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px 15px;
+  border-bottom: 1px solid #ebebeb;
+  flex-shrink: 0;
+}
+
+.vcm-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111111;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vcm-title i {
+  color: #ff3b3b;
+  font-size: 1.1rem;
+}
+
+.vcm-close {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  line-height: 1;
+  transition:
+    color 0.15s,
+    background 0.15s;
+}
+
+.vcm-close:hover {
+  color: #111;
+  background: #f2f2f2;
+}
+
+/* ── Loading / processing ───────────────────────────────────────────── */
+
+.vcm-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  gap: 12px;
+  min-height: 280px;
+  text-align: center;
+}
+
+.vcm-loading-icon {
+  font-size: 2.8rem;
+  color: #ff3b3b;
+  margin-bottom: 8px;
+}
+
+.vcm-loading-icon.processing i {
+  animation: vcm-spin 1.2s linear infinite;
+}
+
+@keyframes vcm-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.vcm-loading-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+.vcm-loading-sub {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
+
+.vcm-loading-note {
+  font-size: 0.76rem;
+  color: #999;
+  margin: 4px 0 0;
+  max-width: 320px;
+}
+
+.vcm-progress-bar {
+  width: 100%;
+  max-width: 320px;
+  height: 6px;
+  background: #e8e8e8;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.vcm-progress-fill {
+  height: 100%;
+  background: #ff3b3b;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* ── Error banner ───────────────────────────────────────────────────── */
+
+.vcm-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: #fff5f5;
+  border-bottom: 1px solid #fecaca;
+  color: #b91c1c;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.vcm-error-banner i {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ── Body (ready state) ─────────────────────────────────────────────── */
+
+.vcm-body {
+  overflow-y: auto;
+  flex: 1;
+  padding: 0 0 4px;
+}
+
+.vcm-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.vcm-body::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 2px;
+}
+
+/* Video preview */
+.vcm-video-preview {
+  width: 100%;
+  max-height: 260px;
+  background: #111;
+  display: block;
+  object-fit: contain;
+}
+
+/* ── Sections ───────────────────────────────────────────────────────── */
+
+.vcm-section {
+  padding: 14px 22px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fff;
+}
+
+.vcm-section:nth-child(even) {
+  background: #fafafa;
+}
+
+.vcm-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.vcm-section-header i {
+  color: #ff3b3b;
+  font-size: 0.95rem;
+}
+
+.vcm-duration-badge {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ff3b3b;
+  background: #fff0f0;
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid #fecaca;
+}
+
+/* ── Trim controls ──────────────────────────────────────────────────── */
+
+.vcm-trim-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vcm-trim-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vcm-trim-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  width: 36px;
+  flex-shrink: 0;
+}
+
+.vcm-trim-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: #e0e0e0;
+  outline: none;
+  cursor: pointer;
+}
+
+.vcm-trim-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ff3b3b;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(255, 59, 59, 0.35);
+  transition: transform 0.14s;
+}
+
+.vcm-trim-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.vcm-trim-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ff3b3b;
+  border: none;
+  cursor: pointer;
+}
+
+.vcm-trim-time {
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  color: #555;
+  width: 54px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── Crop toggle ────────────────────────────────────────────────────── */
+
+.vcm-toggle {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.vcm-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.vcm-toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #ddd;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+.vcm-toggle-slider::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.vcm-toggle input:checked + .vcm-toggle-slider {
+  background: #ff3b3b;
+}
+
+.vcm-toggle input:checked + .vcm-toggle-slider::before {
+  transform: translateX(16px);
+}
+
+.vcm-toggle-label {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+.vcm-crop-wrap {
+  position: relative;
+  height: 280px;
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.vcm-crop-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.vcm-hint {
+  font-size: 0.82rem;
+  color: #999;
+  text-align: center;
+  margin: 8px 0 0;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────── */
+
+.vcm-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  border-top: 1px solid #ebebeb;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.vcm-footer-right {
+  display: flex;
+  gap: 8px;
+}
+
+.vcm-btn-skip {
+  background: none;
+  border: 1.5px solid #d8d8d8;
+  color: #888;
+  font-size: 0.82rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.14s;
+}
+
+.vcm-btn-skip:hover:not(:disabled) {
+  border-color: #aaa;
+  color: #333;
+}
+
+.vcm-btn-cancel {
+  background: #fff;
+  border: 1.5px solid #d8d8d8;
+  color: #444;
+  font-size: 0.85rem;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.14s;
+}
+
+.vcm-btn-cancel:hover {
+  background: #f5f5f5;
+  color: #111;
+}
+
+.vcm-btn-apply {
+  background: #ff3b3b;
+  border: none;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition:
+    background 0.14s,
+    transform 0.1s,
+    opacity 0.14s;
+}
+
+.vcm-btn-apply:hover:not(:disabled) {
+  background: #d42f2f;
+  transform: translateY(-1px);
+}
+
+.vcm-btn-apply:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}

@@ -1,11 +1,10 @@
 .announcements {
   display: flex;
   flex-direction: column;
-  background-color: #1a1a1a;
+  background-color: #1a1a1a; /* overridden by inline style */
   width: 100%;
   overflow: hidden;
   border: solid 5px #000;
-  margin-top: 20px;
 }
 
 /* Film strip using CSS gradient - no DOM elements needed */
@@ -81,6 +80,27 @@
 /* Pause on hover */
 .marquee:hover .marquee-inner {
   animation-play-state: paused;
+}
+
+/* ── Minimalistic variant ───────────────────────────────────────── */
+.announcements-minimal {
+  width: 100%;
+  padding: 9px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.announcements-minimal-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* Responsive */

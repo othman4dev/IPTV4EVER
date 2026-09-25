@@ -1,0 +1,186 @@
+/* ─── Page wrapper ───────────────────────────────────────────────── */
+.admin-pages-content {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+  min-height: calc(100vh - 60px);
+  background: #fff;
+  overflow-y: auto;
+}
+
+/* ─── Page title ─────────────────────────────────────────────────── */
+.admin-pages-header {
+  margin-bottom: 2rem;
+}
+
+.admin-pages-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 4px;
+}
+
+.admin-pages-header p {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0;
+}
+
+/* ─── Sections list ──────────────────────────────────────────────── */
+.page-sections-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ─── Section card ───────────────────────────────────────────────── */
+.page-section {
+  border: 1.5px solid #ebebf0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.page-section.page-section-open {
+  border-color: #d0d0e0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* ─── Section header (clickable row) ─────────────────────────────── */
+.page-section-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+  transition: background 0.15s;
+}
+
+.page-section-header:hover {
+  background: #fafafa;
+}
+
+.page-section-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.page-section-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #f0f2f9;
+  color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.page-section-open .page-section-icon {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.page-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-section-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: #d1fae5;
+  color: #059669;
+  border-radius: 20px;
+  padding: 2px 8px;
+}
+
+.page-section-desc {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 2px;
+}
+
+.page-section-chevron {
+  font-size: 0.9rem;
+  color: #aaa;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.page-section-chevron.rotated {
+  transform: rotate(180deg);
+  color: #1a1a2e;
+}
+
+/* ─── Section body ───────────────────────────────────────────────── */
+.page-section-body {
+  border-top: 1.5px solid #f0f0f5;
+  padding: 0;
+  animation: section-expand 0.2s ease;
+}
+
+@keyframes section-expand {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Embedded section toolbar (add button row) ──────────────────── */
+.section-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 14px 20px 0;
+}
+
+.btn-sm-admin {
+  padding: 8px 16px !important;
+  font-size: 0.82rem !important;
+}
+
+/* ─── Coming soon placeholder ────────────────────────────────────── */
+.page-coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 48px 20px;
+  color: #bbb;
+  text-align: center;
+}
+
+.page-coming-soon i {
+  font-size: 2rem;
+}
+
+.page-coming-soon p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #aaa;
+}
+
+.page-coming-soon strong {
+  color: #888;
+}

@@ -9,5 +9,6 @@ export interface UserResponseDto {
   id: string;
   email: string;
   name: string;
+  phone?: string | null;
   createdAt: Date;
 }

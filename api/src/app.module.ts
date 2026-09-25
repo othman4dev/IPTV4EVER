@@ -8,7 +8,12 @@ import { PlanFeatureModule } from "./plan-feature/plan-feature.module";
 import { UserModule } from "./user/user.module";
 import { ChatModule } from "./chat/chat.module";
 import { AnnouncementModule } from "./announcement/announcement.module";
+import { SlideModule } from "./slide/slide.module";
+import { HeroModule } from "./hero/hero.module";
+import { EndpointModule } from "./endpoint/endpoint.module";
+import { UploadModule } from "./upload/upload.module";
 import { SubscriptionModule } from "./subscription/subscription.module";
+import { BlogModule } from "./blog/blog.module";
 
 @Module({
   imports: [
@@ -31,7 +36,12 @@ import { SubscriptionModule } from "./subscription/subscription.module";
     UserModule,
     ChatModule,
     AnnouncementModule,
+    SlideModule,
+    HeroModule,
+    EndpointModule,
+    UploadModule,
     SubscriptionModule,
+    BlogModule,
   ],
   controllers: [AppController],
   providers: [AppService],

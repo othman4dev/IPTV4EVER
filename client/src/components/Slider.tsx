@@ -1,27 +1,25 @@
 import { useState, useEffect, useCallback } from "react";
 import "../assets/css/slider.css";
+import { getActiveSlides, type Slide } from "../services/slideService";
+import { getFileUrl } from "../services/uploadService";
 
-interface Slide {
-    id: number;
-    title: string;
-    subtitle: string;
-    description: string;
-    icon: string;
-    background?: string;
-    bgImage?: string;
-    isWhite?: boolean;
-}
-
-const slides: Slide[] = [
+// Fallback slides for when API is unavailable
+const FALLBACK_SLIDES: Slide[] = [
     {
         id: 1,
         title: "Premium IPTV",
         subtitle: "Unlimited Entertainment",
         description: "Access 10,000+ channels from around the world in stunning 4K quality",
         icon: "bi-tv",
-        background: "#fff",
-        isWhite: true,
-        bgImage: ""
+        background: "#ffffff",
+        textColor: "#1a1a2e",
+        backgroundDim: 30,
+        hasTextBorder: false,
+        bgImage: undefined,
+        order: 1,
+        isActive: true,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
     },
     {
         id: 2,
@@ -30,8 +28,14 @@ const slides: Slide[] = [
         description: "Live sports coverage including Premier League, NBA, NFL, and more",
         icon: "bi-trophy",
         background: "#FF3B3B",
-        isWhite: false,
-        bgImage: ""
+        textColor: "#ffffff",
+        backgroundDim: 30,
+        hasTextBorder: false,
+        bgImage: undefined,
+        order: 2,
+        isActive: true,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
     },
     {
         id: 3,
@@ -39,9 +43,15 @@ const slides: Slide[] = [
         subtitle: "Endless Content",
         description: "Stream the latest blockbusters and binge-worthy series on demand",
         icon: "bi-film",
-        background: "#fff",
-        isWhite: true,
-        bgImage: ""
+        background: "#ffffff",
+        textColor: "#1a1a2e",
+        backgroundDim: 30,
+        hasTextBorder: false,
+        bgImage: undefined,
+        order: 3,
+        isActive: true,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
     },
     {
         id: 4,
@@ -50,18 +60,47 @@ const slides: Slide[] = [
         description: "Compatible with Smart TV, mobile, tablet, and streaming devices",
         icon: "bi-phone",
         background: "#FF3B3B",
-        isWhite: false,
-        bgImage: ""
+        textColor: "#ffffff",
+        backgroundDim: 30,
+        hasTextBorder: false,
+        bgImage: undefined,
+        order: 4,
+        isActive: true,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
     }
 ];
 
 const Slider = () => {
+    const [slides, setSlides] = useState<Slide[]>([]);
+    const [loading, setLoading] = useState(true);
     const [currentSlide, setCurrentSlide] = useState(1);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
     const [dragStartX, setDragStartX] = useState(0);
     const [dragOffset, setDragOffset] = useState(0);
+
+    // Fetch slides on mount
+    useEffect(() => {
+        const fetchSlides = async () => {
+            try {
+                const data = await getActiveSlides();
+                if (data && data.length > 0) {
+                    setSlides(data);
+                } else {
+                    setSlides(FALLBACK_SLIDES);
+                }
+            } catch (error) {
+                console.error("Failed to load slides:", error);
+                setSlides(FALLBACK_SLIDES);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchSlides();
+    }, []);
 
     // Create extended slides array with clones for infinite loop
     const extendedSlides = [slides[slides.length - 1], ...slides, slides[0]];
@@ -153,7 +192,7 @@ const Slider = () => {
 
     // Handle infinite loop wrap-around
     useEffect(() => {
-        if (!isTransitioning) return;
+        if (!isTransitioning || slides.length === 0) return;
 
         const transitionEnd = setTimeout(() => {
             setIsTransitioning(false);
@@ -166,7 +205,7 @@ const Slider = () => {
         }, 500);
 
         return () => clearTimeout(transitionEnd);
-    }, [currentSlide, isTransitioning]);
+    }, [currentSlide, isTransitioning, slides.length]);
 
     useEffect(() => {
         if (!isAutoPlaying) return;
@@ -175,7 +214,28 @@ const Slider = () => {
         return () => clearInterval(interval);
     }, [isAutoPlaying, nextSlide]);
 
+    if (loading || slides.length === 0) {
+        return (
+            <section className="slider">
+                <div className="slider-container">
+                    <div style={{
+                        width: "100%",
+                        height: "500px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        background: "#f5f5f5",
+                        color: "#999"
+                    }}>
+                        {loading ? "Loading slides..." : "No slides available"}
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
     const actualSlideIndex = currentSlide === 0 ? slides.length - 1 : currentSlide === slides.length + 1 ? 0 : currentSlide - 1;
+    const currentSlideData = slides[actualSlideIndex];
 
     return (
         <section 
@@ -201,44 +261,89 @@ const Slider = () => {
                         userSelect: 'none'
                     }}
                 >
-                    {extendedSlides.map((slide, index) => (
-                        <div 
-                            key={`${slide.id}-${index}`} 
-                            className={`slide ${slide.isWhite ? 'slide-white' : 'slide-red'}`}
-                            style={{ 
-                                backgroundColor: slide.background,
-                                backgroundImage: slide.bgImage ? `url(${slide.bgImage})` : 'none',
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center'
-                            }}
-                        >
-                            <div className="slide-content">
-                                <div className={`slide-icon ${slide.isWhite ? 'icon-white' : 'icon-red'}`}>
-                                    <i className={`bi ${slide.icon}`}></i>
+                    {extendedSlides.map((slide, index) => {
+                        const bgImageUrl = slide.bgImage ? getFileUrl(slide.bgImage) : '';
+                        const overlayOpacity = (slide.backgroundDim ?? 30) / 100;
+                        const textBorderStyle = slide.hasTextBorder ? {
+                            textShadow: `-1px -1px 0 ${slide.textBorderColor}, 1px -1px 0 ${slide.textBorderColor}, -1px 1px 0 ${slide.textBorderColor}, 1px 1px 0 ${slide.textBorderColor}, -2px 0 0 ${slide.textBorderColor}, 2px 0 0 ${slide.textBorderColor}, 0 -2px 0 ${slide.textBorderColor}, 0 2px 0 ${slide.textBorderColor}`
+                        } : {};
+                        return (
+                            <div 
+                                key={`${slide.id}-${index}`} 
+                                className="slide"
+                                style={{ 
+                                    backgroundColor: slide.background,
+                                }}
+                            >
+                                {bgImageUrl && (
+                                    <div 
+                                        className="slide-bg-image"
+                                        style={{
+                                            backgroundImage: `url(${bgImageUrl})`,
+                                            backgroundSize: 'cover',
+                                            backgroundPosition: 'center',
+                                            backgroundAttachment: 'fixed'
+                                        }}
+                                    />
+                                )}
+                                <div 
+                                    className="slide-overlay"
+                                    style={{
+                                        backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})`
+                                    }}
+                                />
+                                <div className="slide-content">
+                                    <div className="slide-icon" style={{ color: slide.background, backgroundColor: slide.textColor }}>
+                                        <i className={`bi ${slide.icon}`}></i>
+                                    </div>
+                                    <span 
+                                        className="slide-subtitle"
+                                        style={{ color: slide.background, backgroundColor: slide.textColor }}
+                                    >
+                                        {slide.subtitle}
+                                    </span>
+                                    <h2 
+                                        className="slide-title"
+                                        style={{ color: slide.textColor, ...textBorderStyle }}
+                                    >
+                                        {slide.title}
+                                    </h2>
+                                    <p 
+                                        className="slide-description"
+                                        style={{ color: slide.textColor, ...textBorderStyle }}
+                                    >
+                                        {slide.description}
+                                    </p>
+                                    <button 
+                                        className="slide-btn"
+                                        style={{ 
+                                            backgroundColor: slide.textColor,
+                                            color: slide.background,
+                                            borderColor: slide.textColor
+                                        }}
+                                    >
+                                        Learn More
+                                        <i className="bi bi-arrow-right"></i>
+                                    </button>
                                 </div>
-                                <span className={`slide-subtitle ${slide.isWhite ? 'subtitle-white' : 'subtitle-red'}`}>{slide.subtitle}</span>
-                                <h2 className="slide-title">{slide.title}</h2>
-                                <p className="slide-description">{slide.description}</p>
-                                <button className={`slide-btn ${slide.isWhite ? 'btn-white' : 'btn-red'}`}>
-                                    Learn More
-                                    <i className="bi bi-arrow-right"></i>
-                                </button>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
                 <button 
-                    className={`slider-nav prev ${slides[actualSlideIndex].isWhite ? 'nav-white' : 'nav-red'}`}
+                    className="slider-nav prev"
                     onClick={prevSlide} 
                     aria-label="Previous slide"
+                    style={{ color: '#000000'}}
                 >
                     <i className="bi bi-chevron-left"></i>
                 </button>
                 <button 
-                    className={`slider-nav next ${slides[actualSlideIndex].isWhite ? 'nav-white' : 'nav-red'}`}
+                    className="slider-nav next"
                     onClick={nextSlide} 
                     aria-label="Next slide"
+                    style={{ color: '#000000'}}
                 >
                     <i className="bi bi-chevron-right"></i>
                 </button>
@@ -247,9 +352,13 @@ const Slider = () => {
                     {slides.map((_, index) => (
                         <button
                             key={index}
-                            className={`dot ${index === actualSlideIndex ? 'active' : ''} ${slides[actualSlideIndex].isWhite ? 'dot-white' : 'dot-red'}`}
+                            className={`dot ${index === actualSlideIndex ? 'active' : ''}`}
                             onClick={() => goToSlide(index)}
                             aria-label={`Go to slide ${index + 1}`}
+                            style={{
+                                backgroundColor: index === actualSlideIndex ? currentSlideData.textColor : 'transparent',
+                                borderColor: currentSlideData.textColor
+                            }}
                         />
                     ))}
                 </div>

@@ -32,6 +32,7 @@ export class UserService {
     dto.id = user.id;
     dto.email = user.email;
     dto.name = user.name;
+    dto.phone = user.phone ?? null;
     dto.role = user.role;
     dto.isBanned = user.isBanned;
     dto.createdAt = user.createdAt;

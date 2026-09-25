@@ -21,6 +21,7 @@ export interface LoginResponse {
     id: string;
     email: string;
     name: string;
+    phone?: string | null;
     createdAt: string;
   };
 }
@@ -138,6 +139,30 @@ export const resetPassword = async (
     if (axios.isAxiosError(error) && error.response) {
       throw {
         message: error.response.data.message || "Failed to reset password",
+        statusCode: error.response.status,
+      } as ApiError;
+    }
+    throw {
+      message: "Network error. Please try again.",
+    } as ApiError;
+  }
+};
+
+export const changePassword = async (
+  email: string,
+  oldPassword: string,
+  newPassword: string,
+): Promise<void> => {
+  try {
+    await axios.post(`${API_URL}/auth/new-password`, {
+      email,
+      oldPassword,
+      newPassword,
+    });
+  } catch (error: any) {
+    if (axios.isAxiosError(error) && error.response) {
+      throw {
+        message: error.response.data.message || "Failed to change password",
         statusCode: error.response.status,
       } as ApiError;
     }

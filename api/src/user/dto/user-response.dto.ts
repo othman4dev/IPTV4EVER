@@ -11,6 +11,7 @@ export class UserResponseDto {
   id!: string;
   email!: string;
   name!: string;
+  phone?: string | null;
   role!: string;
   isBanned!: boolean;
   createdAt!: Date;
